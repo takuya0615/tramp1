@@ -1,0 +1,180 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>神経衰弱</title>
+  <script src="./components/loader.js"></script>
+  　<script src="ad.js"></script>
+  <script src="./lib/onsenui/js/onsenui.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+
+
+
+</head>
+<body>
+<ons-navigator>
+        <ons-page>
+
+<!-- idにphaseを含む5つの要素はそれぞれの場面。これをdisplay: none or blockで切り替えて、ゲームを動かす-->
+<div id="always">
+    <div id="mainheader"></div>
+    <div id="mainheader2"></div>
+
+</div>
+
+   <div id="phasemenu">
+     <img src="img/maingazo.png" width="312" height="235" alt="title">
+     <div id="menubtnbox">
+
+          <div id="game" class="btn">Game</div>
+              <div id="challenge" class="btn invisible"><div id="star1" class="star invisible"></div>Challenge</div> <!-- ライフ制ゲーム -->
+              <div id="challengestage" class="invisible">
+                  <div id="ch_st1" class="stagebtn">1</div>
+                  <div id="ch_st5" class="stagebtn notclear">5</div>
+                  <div id="ch_st10" class="stagebtn notclear">10</div>
+                  <div id="ch_st15" class="stagebtn notclear">15</div>
+                  <div id="ch_st20" class="stagebtn notclear">20</div>
+                  <div id="ch_st25" class="stagebtn notclear">25</div>
+              </div>
+
+              <div id="timelimit" class="btn invisible"><div id="star2" class="star invisible"></div>Timelimit</div> <!-- 時間制限ゲーム -->
+              <div id="timelimitstage" class="invisible">
+                    <div id="ti_st1" class="stagebtn">1</div>
+                    <div id="ti_st5" class="stagebtn notclear">5</div>
+                    <div id="ti_st10" class="stagebtn notclear">10</div>
+                    <div id="ti_st15" class="stagebtn notclear">15</div>
+                    <div id="ti_st20" class="stagebtn notclear">20</div>
+                    <div id="ti_st25" class="stagebtn notclear">25</div>
+              </div>
+
+              <div id="rtn1" class="btn invisible">Return</div>
+              <div id="option" class="btn">Option</div>
+      </div>
+   </div>
+
+   <div id="phasegame1" class="invisible">
+    <div id="mask1" class="mask"></div>         <!--一番最初にあることで初期設定のz-indexのままで、他の要素より後ろにいくようになる。（btnは全てfixedのため） -->
+    <div id="headergame1" class="header">
+        <div id="rtn2" class="closebtn">×</div>
+    </div>
+
+    <div id="start" class="btn">Start</div>
+   </div>
+
+   <div id="phasegame2" class="invisible">
+     <div id="headergame2" class="header">
+        <div id="rtn3" class="closebtn">×</div>
+     </div>
+     <div id="statusbox">
+         <div id="stagetext">0</div>
+         <div id ="scoretext">0</div>
+         <div id ="timertext">0.00</div>
+         <div id ="lifetext">0</div>
+    </div>
+
+     <div id="stage"></div>
+   </div>
+
+   <div id="phasegameover" class="invisible">
+     <div id="mask2" class="mask"></div><!--一番最初にあることで初期設定のz-indexのままで、他の要素より後ろにいくようになる。 -->
+
+       <div id="headerclear" class="header">
+            <div id="rtn4" class="closebtn">×</div>
+       </div>
+      <div id="congraturation" class="invisible"></div>
+      <div id="result">
+          Result
+          <div id="thistimescore"></div>
+          <div id="thistimelevel"></div>
+      </div>
+
+      <div id="retry" class="btn">Retry?</div>
+      <div id="fromstart" class="btn">From Start</div>
+      <div id="topmenu" class="btn">Top Menu</div>
+
+   </div>
+
+   <div id="phaseclear" class="invisible">
+       <div id="mask3" class="mask"></div>
+
+       <div id="headerclear" class="header">
+            <div id="rtn5" class="closebtn">×</div>
+       </div>
+
+       <div id="nextstage" class="btn">Next Stage?</div>
+
+   </div>
+
+    <div id="phaseoption" class="invisible">
+      <div id="optionbtnbox">
+        <div id="gamecentershow" class="btn">Gamecenter ranking</div>
+        <div id="recordmenu">
+               <div id="scr" class="btn">Record</div>
+               <div id="scrtable" class="invisible">
+                    <div id="lifescrtable">Challenge Mode
+                        <div id="lifelevel"></div>
+                        <div id="lifescore"></div>
+                    </div>
+                    <div id="timescrtable">Timelimit Mode
+                        <div id="timelevel"></div>
+                        <div id="timescore"></div>
+                    </div>
+
+               </div>
+         </div>
+
+
+       <div id="showdelete" class="btn ">！Open Clear Data Menu！</div>
+       <div id="deletetable" class="invisible">
+               <div id="close1" class="closebtn">×</div>
+               <div id="deletelifegame" class="btn">！Challenge！</div>
+               <div id="deletetimegame" class="btn">！Timelimit！</div>
+               <div id="deleteall" class="btn">！！ALL！！</div>
+
+
+
+
+       </div>
+
+       <div id="rtn6" class="btn">Return</div>
+
+       </div>
+    </div>
+
+<ons-template id="banner_size.html">
+    <ons-dialog var="dialog" cancelable mask-color="rgba(0, 0, 0, 0.7)">
+        <div class="margin10 text-center">
+            <ons-toolbar inline>
+                <div class="center">
+                    Banner Size
+                </div>
+            </ons-toolbar>
+
+            <ons-list style="margin:0; padding:0; font-size: 90%;">
+                <ons-list-item modifier="tappable">
+                    <ons-input type="radio" name="radio" value='BANNER'>  BANNER</ons-input>
+                </ons-list-item>
+                <ons-list-item modifier="tappable">
+                    <ons-input type="radio" name="radio" value='FULL_BANNER'>  FULL_BANNER</ons-input>
+                </ons-list-item>
+                <ons-list-item modifier="tappable">
+                    <ons-input type="radio" name="radio" value='LEADERBOARD'>  LEADERBOARD</ons-input>
+                </ons-list-item>
+                <ons-list-item modifier="tappable">
+                    <ons-input type="radio" name="radio" value='MEDIUM_RECTANGLE'>  MEDIUM_RECTANGLE</ons-input>
+                </ons-list-item>
+                <ons-list-item modifier="tappable">
+                    <ons-input type="radio" name="radio" value="SMART_BANNER" checked>  SMART_BANNER</ons-input>
+                </ons-list-item>
+            </ons-list>
+        </div>
+    </ons-dialog>
+</ons-template>
+
+    </ons-page>
+</ons-navigator>
+
+ <script src="trampgame.js"></script>
+
+</body>
+</html>

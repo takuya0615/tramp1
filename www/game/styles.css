@@ -1,0 +1,506 @@
+/* This is a CSS file */
+
+/*ゲーム全体*/
+/*class=btnでボタンになるが、その際はtopとleftを設定しないといけない。leftは50%で中央に行く。幅を変えたらmargin-leftを大きさの半分だけ引いてやる必要がある*/
+
+
+body {
+      margin: 0;
+      width: auto;
+      height: auto;
+      background: #00d4f0;
+      text-align: center;
+      font-family: Arial, sans-serif;
+      color: #fff;
+
+      margin-right: auto;       /*この二行だけで要素が全て中央配置になる(｀･ω･´)　魔法の言葉だ！。あとbtnに対してはwidthの半分margin-leftを引いてやらないと要素の左上基準になってしまい中央に行かない*/
+      margin-left : auto;
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+
+.btn {
+        margin: 10px 0 10px 0;
+        width: 200px;
+        padding: 10px;
+        background: #000;
+        cursor: pointer;
+        border-radius: 5px;
+        margin-left: -100px;        /*ただleftで50で位置を設定すると、基準が要素の左上になってしまう。この場合margin-leftでwidthの半分を-してやるとうまくいく*/
+        position: relative;
+        box-shadow: 0 5px rgba(0,0,0,0.5);
+        }
+
+.closebtn {
+        float: left;
+        width: 20px;
+        height: 20px;
+        padding: 0;
+        margin: 5px 10px 5px 10px;
+        background: #ccc;
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 5px;
+}
+
+.disabled {
+    opacity: 0.5;
+}
+
+#mainheader {
+  background: rgba(0, 0, 0, 0.3);
+  margin: 0;
+  padding: 0;
+  height: 20px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+}
+
+#mainheader2 {      /*mainheaderをfixedにしても配置を変えないためのもの*/
+  background: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding: 0;
+  position: static;
+  height: 20px;
+  display: block;
+}
+
+.header {
+    background: #aaa;
+    margin: 0;
+    padding: 0;
+    opacity: 0.8;
+    position: static;
+    right: 0;
+    left: 0;
+    height: 30px;
+
+    display: block;
+}
+
+
+.pushed {
+    margin-top: 12px;
+    margin-bottom: -2px;
+
+    box-shadow: 0 3px rgba(0,0,0,0.8);
+}
+
+
+.invisible {
+    display: none;
+}
+
+.notclear{
+  opacity: 0.5;
+}
+
+
+.mask {
+  background: rgba(0, 0, 0, 0.3);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+}
+
+.star {
+    background-image: url(img/hosi.png);
+    background-position: center center;
+    background-size: contain;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+}
+
+.stagebtn {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background: #000;
+    border-radius: 5px;
+
+}
+
+
+/*phasemenu*/
+#menubtnbox{
+  width: 300px;
+  position: relative;
+  top: 10px;
+  left: 50%;
+  margin-left: -150px;
+
+}
+
+#game {
+    display: block;
+    left: 50%;
+}
+#challenge {
+    width: 150px;
+
+
+    left: 50%;
+    margin-left: -75px;
+    }
+
+#challengestage {
+    background: #fff;
+    width: 300px;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px;
+    left: 50%;
+    margin-left: -150px;
+    position: relative;
+    box-shadow: 0 2px rgba(0,0,0,0.2);
+}
+
+
+#timelimit {
+    width: 150px;
+    left: 50%;
+    margin-left: -75px;
+}
+
+#timelimitstage {
+    background: #fff;
+    width: 300px;
+    padding: 5px;
+    height: 20px;
+    border-radius: 5px;
+    left: 50%;
+    margin-left: -150px;
+    position: relative;
+    box-shadow: 0 2px rgba(0,0,0,0.2);
+
+}
+
+
+#rtn1 {
+    left: 50%;
+}
+
+#option {
+    left: 50%;
+}
+
+
+
+/*phasegame1*/
+    #rtn2, #rtn3 {
+
+    }
+
+    #start {
+        position: fixed;
+        top: 300px;
+        left: 50%;
+    }
+
+
+    /*phasegame2*/
+
+            /*rtn3はphasegame1でrtn2と一緒に規定*/
+
+    #statusbox {
+        background: #0e0;
+        width: auto;
+        position: relative;
+        margin-top: 0;
+        padding-top: 0;
+        height: 40px;
+
+    }
+
+
+
+
+    #timertext, #lifetext {
+        width: 110px;
+        background: #fff;
+        margin: 0 10px 0 0;
+        float: right;
+        font-family: Verdana, sans-serif;
+        font-style: bold;
+        color: #000;
+        border-radius: 5px;
+
+    }
+
+
+
+
+
+    #scoretext {
+        width: 110px;
+        background: #fff;
+        margin: 0 10px 0 0;
+        font-family: Verdana, sans-serif;
+        font-style: bold;
+        color: #000;
+        position: static;
+        float: right;
+        border-radius: 5px;
+        }
+
+    #stagetext {
+        margin: 10px 10px;
+        width: 100px;
+        background: #fff;
+        font-family: Verdana, sans-serif;
+        font-style: bold;
+        color: #000;
+        position: static;
+        float: left;
+        text-align: center;
+        border-radius: 5px;
+    }
+
+
+
+
+        #stage {
+          width: auto;
+          margin: 20px auto;
+        }
+
+
+        .card-container {
+            margin: 0 10px 5px 0;
+            display: inline-block;
+            cursor: pointer;
+            width: 50px;
+            height: 60px;
+            font-size: 24px;
+            font-weight: bold;
+            color: rgba(0, 0, 0, 0);    /*テキスト内容でカードの認識をしていて消せないので、代わりに見えないよう透明にする*/
+
+            line-height: 60px;
+            position: relative;
+            perspective: 100px;     /*ひっくり返すときの奥行*/
+
+            }
+
+
+
+        .card {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            transform-style: preserve-3d;   /*cardの子要素が2D上に保持作画されるか(flat)、3D上に保持作画されるか(preserve-3d)*/
+            transition: transform .5s;
+            animation-name: slidein;
+            animation-duration: 1s;
+            animation-timing-function: ease;
+        }
+
+                @keyframes slidein {    デフォルトで左にあるのが基本なので、右から左へのスライドイン
+                  0% {
+                    margin-left: 0%;
+                    opacity: 0;
+                  }
+                  20% {
+                    margin-left: 70%;
+                    opacity: 0;
+                  }
+                  80% {
+                    margin-left: 80%;
+                    opacity: 0;
+                  }
+
+                  100% {
+                    margin-left: 0%;
+                    opacity: 1;
+                  }
+                }
+
+
+        .card.open {
+            transform: rotateY(180deg); /*このクラスがつくときに指定の角度だけ回転させる*/
+        }
+
+        .card-back, .card-front {
+            display: block;
+            width: 100%;
+            height: 100%;
+            border-radius: 5px;
+            position: absolute;
+            backface-visibility: hidden;    /*表面と裏面の要素は単に重ねているだけで、ただ裏返しにしても上にある表面の要素が反対向きになって見えるようになっている。これを裏返した時に見えなくすることで、裏返した時裏面の要素が見えるようにする。*/
+            -webkit-backface-visibility: hidden;    /*safali9, 10ではまだ使えないため*/
+        }
+        .card-back {
+            background: url('img/ura.gif');
+
+        }
+        .card-front {
+            background: #fff;
+            color: rg.5sba(255, 100, 100, 0);      /*文字は透明にしておく*/
+            transform: rotateY(180deg); /*180度回転した状態で保持されている。card-backとcard-frontの要素は同じ場所に裏返した状態でおいてある。*/
+        }
+
+
+/*phaseclear　（javascriptではphasegame2のfunciton tramp内に記述してある）*/
+
+#nextstage {
+    position: fixed;
+    top: 250px;
+    left: 50%;
+}
+
+/*phasegameover*/
+
+#congraturation {
+  background-image: url("img/congraturation.png");
+  background-position: center center;
+  background-size: contain;
+  height: 100px;
+  width: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  
+        position: relative;
+}
+
+
+#retry {
+
+    left: 50%;
+}
+#fromstart {
+
+    left: 50%;
+}
+#topmenu {
+
+    left: 50%;
+}
+
+#result {
+    width: 200px;
+    height: 100px;
+    margin-top: 10px;
+    margin-left: -90px;
+    background: #CCE;
+    border-radius: 10px;
+    position: relative;
+    left: 50%;
+    font-size: 30px;
+    color: #000;
+    font-family: Arial, serif;
+    font-weight: bold;
+    text-align: center;
+    box-shadow: 2px;
+}
+
+#thistimescore {
+    position: absolute;
+    margin: auto 5px;
+    top: 35px;
+    left: auto;
+    font-size: 20px;
+    font-family: Arial, serif;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+}
+
+#thistimelevel {
+
+    position: absolute;
+    margin: auto 5px;
+    top: 65px;
+    left: auto;
+    font-size: 20px;
+    font-family: Arial, serif;
+    font-weight: bold;
+    color: #FFF;
+    text-align: center;
+
+
+
+}
+
+
+
+
+/*phaseoption*/
+#optionbtnbox {
+  width: 300px;
+  position: relative;
+  top: 100px;
+  left: 50%;
+  margin-left: -150px;
+}
+
+#rtn6 {
+    left: 50%;
+}
+
+
+#scr {
+    left: 50%;
+}
+
+#showdelete {
+    left: 50%;
+}
+
+#scrtable {
+    font-style: bold;
+    text-shadow:0px 2px 2px #000000;
+}
+
+#lifescrtable {
+    margin: 5px auto;
+}
+
+
+#deletetable {
+    text-align: center;
+    background: #eaa;
+    padding: auto auto 100px auto;
+    border-radius: 3px;
+    position: relative;
+    left: 50%;
+    width: 400px;
+    margin-right: auto;
+    margin-left: -200px;
+}
+
+#deletelifegame {
+    position: static;
+    top: auto;
+    display: inline-block;
+    margin: 5px auto 5px -20px;   /*margin-left -20pxがないとなぜか中央に行かない*/
+
+    width: 130px;
+}
+#deletetimegame {
+    position: static;
+    top: auto;
+    display: inline-block;
+    margin: 5px auto 5px auto;
+    width: 130px;
+}
+#deleteall {
+    position: static;
+    top: auto;
+    display: inline-block;
+    margin: 5px auto 5px 20px;    /*margin-left 20pxがないとなぜか中央に行かない*/
+    width: 200px;
+}
+
+#close1 {
+}
